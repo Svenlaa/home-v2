@@ -11,19 +11,21 @@ const pages = [
 ];
 
 const renderPage = async (element: string | Promise<string>, path: string): Promise<void> => {
+    console.log(`Generating ${path}.html`);
     const html = await (<BaseLayout>{element}</BaseLayout>);
     await writeFile(`dist/${path}.html`, html);
-    console.log(`Generated: ${path}.html`);
 };
 
-const boot = async (): Promise<void> => {
+const boot = async (): Promise<number> => {
+    const now = Date.now();
     await rm('dist', { recursive: true, force: true });
     await mkdir('dist');
     for (const page of pages) {
         await renderPage(page.element, page.path);
     }
+    return Date.now() - now;
 };
 
-boot().then(() => {
-    console.log('\nDone!');
+boot().then((duration) => {
+    console.log(`\nDone in ${duration}ms`);
 });
