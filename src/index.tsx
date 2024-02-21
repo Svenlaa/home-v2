@@ -1,5 +1,5 @@
-import {Html} from '@kitajs/html';
-import {mkdir, rm, writeFile} from 'node:fs/promises';
+import { Html } from '@kitajs/html';
+import { mkdir, rm, writeFile } from 'node:fs/promises';
 import BaseLayout from './layout/base';
 import HomePage from './pages/home';
 
