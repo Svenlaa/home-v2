@@ -1,7 +1,8 @@
 import Html from '@kitajs/html';
+import Header from '../components/header';
 
-type BaseLayoutProps = { children: JSX.Element; title?: string };
-const BaseLayout = ({ children, title = 'Svenlaa' }: BaseLayoutProps) => {
+type BaseLayoutProps = { children: JSX.Element; title?: string; path: string };
+const BaseLayout = ({ children, title = 'Svenlaa', path }: BaseLayoutProps) => {
     // noinspection HtmlUnknownTarget
     return (
         <html lang="en">
@@ -9,7 +10,10 @@ const BaseLayout = ({ children, title = 'Svenlaa' }: BaseLayoutProps) => {
                 <title>{title}</title>
                 <link rel="stylesheet" href="style.css" />
             </head>
-            <body>{children}</body>
+            <body>
+                <Header path={path} />
+                <main>{children}</main>
+            </body>
         </html>
     );
 };
