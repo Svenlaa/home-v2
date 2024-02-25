@@ -14,10 +14,10 @@ const Header = () => {
     ] as const;
     return (
         <header class="z-50 mx-auto w-screen md:container" x-data="{open: false}">
-            <div class="mx-auto flex w-full flex-row justify-between bg-white p-4 drop-shadow-md dark:bg-black md:bg-inherit">
+            <div class="mx-auto flex w-full flex-row justify-between bg-white/50 p-4 drop-shadow-md md:bg-inherit">
                 <a
                     href="/"
-                    class="my-auto text-3xl duration-200 ease-in hover:text-prime-900 dark:hover:text-prime-200"
+                    class="my-auto text-3xl duration-200 ease-in hover:text-prime-900 dark:text-white dark:hover:text-prime-200"
                 >
                     Svenlaa
                 </a>

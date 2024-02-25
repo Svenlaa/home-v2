@@ -10,7 +10,7 @@ const Page = (props: tBlogpage): Promise<string> | string => {
     return (
         <BaseLayout class="text-lg flex flex-row mt-8 lg:gap-8 gap-4 justify-center">
             <div class="flex-1 max-w-[80ch]">
-                <h1 class="text-3xl font-bold bg-gradient-to-br from-prime-800 to-prime-500 bg-clip-text text-transparent ">
+                <h1 class="text-3xl font-bold bg-gradient-to-br from-prime-800 dark:from-prime-700 to-prime-500 dark:to-prime-400 bg-clip-text text-transparent ">
                     {meta.title}
                 </h1>
                 <div class="text-gray-500 text-sm mt-1 mb-4 flex flex-col">
@@ -19,7 +19,7 @@ const Page = (props: tBlogpage): Promise<string> | string => {
                         <span>updated on {new Date(meta.updatedAt).toLocaleDateString()}</span>
                     )}
                 </div>
-                <article class="prose max-w-[80ch]">{post}</article>
+                <article class="prose dark:prose-invert max-w-[80ch]">{post}</article>
             </div>
             <BlogNavigation />
         </BaseLayout>

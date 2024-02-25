@@ -25,12 +25,19 @@ const BaseLayout = (props: Props) => {
                     <link rel="stylesheet" href="/style.css" />
                     <link rel="stylesheet" href="/marked.css" />
                     <script src="https://unpkg.com/alpinejs" defer />
+                    <link rel="preconnect" href="https://fonts.googleapis.com" />
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+                        rel="stylesheet"
+                    />
+
                     <link
                         rel="stylesheet"
                         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
                     />
                 </head>
-                <body class="relative flex min-h-screen w-full flex-col">
+                <body class="relative flex min-h-screen w-full flex-col bg-white dark:bg-stone-900">
                     <Header />
                     <main
                         style={{ scrollbarGutter: 'stable both-edges' }}

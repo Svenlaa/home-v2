@@ -33,7 +33,9 @@ const Page = (): Promise<string> | string => {
                         class="aspect-square rounded-lg shadow-inner"
                     />
                 </span>
-                <span class="mx-auto mt-4 text-center text-2xl font-bold">{profile.name}</span>
+                <span class="mx-auto mt-4 text-center text-2xl font-bold dark:text-gray-200">
+                    {profile.name}
+                </span>
                 <span class="text-center text-gray-600 dark:text-gray-400">{profile.role}</span>
                 {profile.links && (
                     <div class="my-2 flex flex-row justify-center gap-2">
