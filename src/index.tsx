@@ -6,7 +6,7 @@ import { execCommand } from './util';
 
 const pages = [
     {
-        path: 'index',
+        path: '/',
         element: <HomePage />,
     },
 ];
@@ -14,6 +14,10 @@ const pages = [
 const renderPage = async (element: string | Promise<string>, path: string): Promise<void> => {
     console.log(`Generating ${path}.html`);
     const html = await (<BaseLayout path={path}>{element}</BaseLayout>);
+    if (path === '/') {
+        await writeFile('dist/index.html', html);
+        return;
+    }
     await writeFile(`dist/${path}.html`, html);
 };
 
