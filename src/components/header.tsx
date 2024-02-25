@@ -7,8 +7,8 @@ type Path = {
 };
 
 const paths: Readonly<Path[]> = [
-    { href: '/', label: 'Home', icon: 'bi-house' },
-    { href: '/blog', label: 'Blog', icon: 'bi-newspaper' },
+    // { href: '/', label: 'Home', icon: 'bi-house' },
+    // { href: '/blog', label: 'Blog', icon: 'bi-newspaper' },
 ] as const;
 
 const Header = ({ path }) => {
