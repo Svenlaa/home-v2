@@ -14,7 +14,7 @@ const Header = () => {
     ] as const;
     return (
         <header
-            class="z-50 mx-auto w-screen md:container bg-gray-50/50 dark:bg-white/10 backdrop-blur-2xl"
+            class="z-50 mx-auto w-screen md:container bg-gray-50/50 dark:bg-white/10 backdrop-blur-xl"
             x-data="{open: false}"
         >
             <div class="mx-auto flex w-full flex-row justify-between p-4 drop-shadow-md md:bg-inherit">
