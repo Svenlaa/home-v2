@@ -2,7 +2,7 @@ import type { Config } from 'tailwindcss';
 import { slate, violet } from 'tailwindcss/colors.js';
 
 export default {
-    content: ['static/**/*.html', 'src/**/**/*.tsx'],
+    content: ['static/**/*.html', 'src/**/*.tsx'],
     theme: {
         extend: {
             colors: {
