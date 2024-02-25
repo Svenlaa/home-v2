@@ -13,8 +13,11 @@ const Header = () => {
         { href: '/blog', label: 'Blog', icon: 'bi-newspaper' },
     ] as const;
     return (
-        <header class="z-50 mx-auto w-screen md:container" x-data="{open: false}">
-            <div class="mx-auto flex w-full flex-row justify-between bg-white/50 p-4 drop-shadow-md md:bg-inherit">
+        <header
+            class="z-50 mx-auto w-screen md:container bg-gray-50/50 dark:bg-white/10 backdrop-blur-2xl"
+            x-data="{open: false}"
+        >
+            <div class="mx-auto flex w-full flex-row justify-between p-4 drop-shadow-md md:bg-inherit">
                 <a
                     href="/"
                     class="my-auto text-3xl duration-200 ease-in hover:text-prime-900 dark:text-white dark:hover:text-prime-200"
@@ -55,7 +58,7 @@ const Header = () => {
             {!!paths.length && (
                 <div
                     x-bind:class="{'flex': open, 'hidden': !open}"
-                    class=" absolute w-full hidden flex-col rounded-b-xl bg-white px-4 drop-shadow-md dark:bg-gray-900 md:hidden"
+                    class="absolute w-full hidden flex-col rounded-b-xl px-4 drop-shadow-md md:hidden backdrop-blur-xl bg-gray-50/50 dark:bg-white/10"
                 >
                     {paths.map((p) => (
                         <HeaderLink to={p.href} key={p.href} icon={p.icon}>
@@ -82,8 +85,8 @@ const HeaderLink = (props: LinkProps) => {
             href={to === '/blog' ? blogData[0].path : to}
             class={`${
                 isActive
-                    ? 'text-prime-700 md:bg-prime-700 md:text-white md:hover:bg-prime-600'
-                    : 'hover:text-prime-700 md:bg-white md:text-gray-800 md:hover:bg-prime-700 md:hover:text-white md:dark:bg-gray-800 md:dark:text-gray-400'
+                    ? 'text-prime-700 md:bg-prime-700 md:text-white md:hover:bg-prime-600 dark:text-prime-500 md:dark:text-prime-50'
+                    : 'text-prime-950 hover:text-prime-700 md:bg-white md:text-prime-800 md:hover:bg-prime-700 md:hover:text-white dark:md:bg-gray-800 dark:text-prime-50 dark:hover:text-prime-500 dark:md:hover:text-prime-50'
             } transition-text whitespace-nowrap rounded-md p-2 px-3 text-xl drop-shadow-sm delay-75 duration-500 ease-out`}
         >
             {icon ? <i class={`${icon} text-md pr-2`} /> : null}
