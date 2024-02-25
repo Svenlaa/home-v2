@@ -1,4 +1,5 @@
 import { Html } from '@kitajs/html';
+import { blogData, PATH } from '../index.js';
 
 type Path = {
     href: string;
@@ -6,12 +7,11 @@ type Path = {
     icon?: string;
 };
 
-const paths: Readonly<Path[]> = [
-    // { href: '/', label: 'Home', icon: 'bi-house' },
-    // { href: '/blog', label: 'Blog', icon: 'bi-newspaper' },
-] as const;
-
-const Header = ({ path }) => {
+const Header = () => {
+    const paths: Readonly<Path[]> = [
+        { href: '/', label: 'Home', icon: 'bi-house' },
+        { href: '/blog', label: 'Blog', icon: 'bi-newspaper' },
+    ] as const;
     return (
         <header class="z-50 mx-auto w-screen md:container" x-data="{open: false}">
             <div class="mx-auto flex w-full flex-row justify-between bg-white p-4 drop-shadow-md dark:bg-black md:bg-inherit">
@@ -42,12 +42,7 @@ const Header = ({ path }) => {
                         {/* Section that shows tabs on larger screens */}
                         <div class="hidden gap-4 md:flex md:flex-row">
                             {paths.map((p) => (
-                                <HeaderLink
-                                    to={p.href}
-                                    isActive={p.href === path}
-                                    key={p.href}
-                                    icon={p.icon}
-                                >
+                                <HeaderLink to={p.href} key={p.href} icon={p.icon}>
                                     {p.label}
                                 </HeaderLink>
                             ))}
@@ -63,12 +58,7 @@ const Header = ({ path }) => {
                     class=" absolute w-full hidden flex-col rounded-b-xl bg-white px-4 drop-shadow-md dark:bg-gray-900 md:hidden"
                 >
                     {paths.map((p) => (
-                        <HeaderLink
-                            to={p.href}
-                            isActive={p.href === path}
-                            key={p.href}
-                            icon={p.icon}
-                        >
+                        <HeaderLink to={p.href} key={p.href} icon={p.icon}>
                             {p.label}
                         </HeaderLink>
                     ))}
@@ -81,17 +71,17 @@ const Header = ({ path }) => {
 type LinkProps = {
     to: string;
     children: ReactNode;
-    isActive?: boolean;
     icon?: string;
 };
 
 const HeaderLink = (props: LinkProps) => {
     const { to, children, icon } = props;
+    const isActive = to === PATH || (to !== '/' && PATH.startsWith(to));
     return (
         <a
-            href={to}
+            href={to === '/blog' ? blogData[0].path : to}
             class={`${
-                props.isActive
+                isActive
                     ? 'text-prime-700 md:bg-prime-700 md:text-white md:hover:bg-prime-600'
                     : 'hover:text-prime-700 md:bg-white md:text-gray-800 md:hover:bg-prime-700 md:hover:text-white md:dark:bg-gray-800 md:dark:text-gray-400'
             } transition-text whitespace-nowrap rounded-md p-2 px-3 text-xl drop-shadow-sm delay-75 duration-500 ease-out`}
