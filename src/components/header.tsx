@@ -22,23 +22,46 @@ const Header = ({ path }) => {
                     Svenlaa
                 </a>
 
-                {/* Section with hamburger for smaller screens */}
-                <div class="flex flex-row md:hidden ">
-                    <button
-                        class="translate aspect-square rounded-full bg-prime-600 text-3xl text-white"
-                        aria-label="hamburger menu"
-                        type="button"
-                        x-on:click="open = !open"
-                    >
-                        <i
-                            x-bind:class="{'bi-list': !open, 'bi-x': open}"
-                            class="bi-list aspect-square scale-90 p-2"
-                        />
-                    </button>
-                </div>
+                {!!paths.length && (
+                    <>
+                        {/* Section with hamburger for smaller screens */}
+                        <div class="flex flex-row md:hidden ">
+                            <button
+                                class="translate aspect-square rounded-full bg-prime-600 text-3xl text-white"
+                                aria-label="hamburger menu"
+                                type="button"
+                                x-on:click="open = !open"
+                            >
+                                <i
+                                    x-bind:class="{'bi-list': !open, 'bi-x': open}"
+                                    class="bi-list aspect-square scale-90 p-2"
+                                />
+                            </button>
+                        </div>
 
-                {/* Section that shows tabs on larger screens */}
-                <div class="hidden gap-4 md:flex md:flex-row">
+                        {/* Section that shows tabs on larger screens */}
+                        <div class="hidden gap-4 md:flex md:flex-row">
+                            {paths.map((p) => (
+                                <HeaderLink
+                                    to={p.href}
+                                    isActive={p.href === path}
+                                    key={p.href}
+                                    icon={p.icon}
+                                >
+                                    {p.label}
+                                </HeaderLink>
+                            ))}
+                        </div>
+                    </>
+                )}
+            </div>
+
+            {/* Dropdown for smaller screens */}
+            {!!paths.length && (
+                <div
+                    x-bind:class="{'flex': open, 'hidden': !open}"
+                    class=" absolute w-full hidden flex-col rounded-b-xl bg-white px-4 drop-shadow-md dark:bg-gray-900 md:hidden"
+                >
                     {paths.map((p) => (
                         <HeaderLink
                             to={p.href}
@@ -50,19 +73,7 @@ const Header = ({ path }) => {
                         </HeaderLink>
                     ))}
                 </div>
-            </div>
-
-            {/* Dropdown for smaller screens */}
-            <div
-                x-bind:class="{'flex': open, 'hidden': !open}"
-                class=" absolute w-full hidden flex-col rounded-b-xl bg-white px-4 drop-shadow-md dark:bg-gray-900 md:hidden"
-            >
-                {paths.map((p) => (
-                    <HeaderLink to={p.href} isActive={p.href === path} key={p.href} icon={p.icon}>
-                        {p.label}
-                    </HeaderLink>
-                ))}
-            </div>
+            )}
         </header>
     );
 };

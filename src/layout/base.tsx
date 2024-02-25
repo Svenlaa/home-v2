@@ -21,14 +21,14 @@ const BaseLayout = (props: Props) => {
     return (
         <>
             {'<!DOCTYPE html>'}
-            <html lang="en">
+            <html lang="en" data-generated={new Date().toISOString().split('T')[0]}>
                 <head>
                     <title>{title ?? 'Svenlaa'}</title>
                     <link rel="stylesheet" href="style.css" />
                     <script src="https://unpkg.com/alpinejs" defer />
                     <link
                         rel="stylesheet"
-                        href="//cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+                        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
                     />
                 </head>
                 <body class="relative flex min-h-screen w-full flex-col">

@@ -1,19 +1,20 @@
 import { Html } from '@kitajs/html';
-import { mkdir, rm, writeFile } from 'node:fs/promises';
-import BaseLayout from './layout/base';
-import HomePage from './pages/home';
-import { execCommand } from './util';
+import { mkdir, rm, writeFile, cp } from 'node:fs/promises';
+import { run } from './util';
+import Index from './pages/index';
 
-const pages = [
+type tPage = ({ path }: { path: string }) => string | Promise<string>;
+
+const pages: { path: string; Page: tPage }[] = [
     {
         path: '/',
-        element: <HomePage />,
+        Page: Index,
     },
 ];
 
-const renderPage = async (element: string | Promise<string>, path: string): Promise<void> => {
-    console.log(`Generating ${path}.html`);
-    const html = await (<BaseLayout path={path}>{element}</BaseLayout>);
+const renderPage = async (Page: tPage, path: string): Promise<void> => {
+    console.log(`Generating ${path === '/' ? 'index' : path}.html`);
+    const html = await (<Page path={path === 'index' ? '/' : path} />);
     if (path === '/') {
         await writeFile('dist/index.html', html);
         return;
@@ -25,13 +26,14 @@ const boot = async (): Promise<number> => {
     const now = Date.now();
     await rm('dist', { recursive: true, force: true });
     await mkdir('dist');
+    await cp('static', 'dist', { recursive: true });
     for (const page of pages) {
-        await renderPage(page.element, page.path);
+        await renderPage(page.Page, page.path);
     }
     return Date.now() - now;
 };
 
 boot().then((duration) => {
     console.log(`\nDone in ${duration}ms`);
-    execCommand('pnpm build:css', ['silent']);
+    run('pnpm build:css');
 });
