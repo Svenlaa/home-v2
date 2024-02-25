@@ -1,0 +1,8 @@
+ul.marked {
+    @apply list-disc list-inside;
+}
+
+ol.marked {
+    @apply list-decimal list-inside;
+}
+

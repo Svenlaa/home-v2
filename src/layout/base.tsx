@@ -4,10 +4,9 @@ import IntrinsicElements = JSX.IntrinsicElements;
 
 type Props = {
     title?: string;
-    path: string;
 } & IntrinsicElements['main'];
 const BaseLayout = (props: Props) => {
-    const { children, title, path } = props;
+    const { children, title } = props;
     const className = `gutter z-10 mx-auto h-full w-full flex-grow px-4 md:container ${
         props?.class ?? ''
     }`.trim();
@@ -16,7 +15,6 @@ const BaseLayout = (props: Props) => {
     props.children = undefined;
     props.class = undefined;
     props.title = undefined;
-    props.path = undefined;
     // noinspection HtmlUnknownTarget
     return (
         <>
@@ -24,7 +22,8 @@ const BaseLayout = (props: Props) => {
             <html lang="en" data-generated={new Date().toISOString().split('T')[0]}>
                 <head>
                     <title>{title ?? 'Svenlaa'}</title>
-                    <link rel="stylesheet" href="style.css" />
+                    <link rel="stylesheet" href="/style.css" />
+                    <link rel="stylesheet" href="/marked.css" />
                     <script src="https://unpkg.com/alpinejs" defer />
                     <link
                         rel="stylesheet"
@@ -32,11 +31,10 @@ const BaseLayout = (props: Props) => {
                     />
                 </head>
                 <body class="relative flex min-h-screen w-full flex-col">
-                    <Header path={path} />
+                    <Header />
                     <main
                         style={{ scrollbarGutter: 'stable both-edges' }}
                         {...props}
-                        x-data="{show: false}"
                         class={`gutter z-10 mx-auto h-full w-full flex-grow px-4 md:container ${className}`}
                     >
                         {children}

@@ -1,13 +1,9 @@
 import { Html } from '@kitajs/html';
 import BaseLayout from '../layout/base';
 
-const Page = ({ path }: { path: string }): Promise<string> | string => {
+const Page = (): Promise<string> | string => {
     const profile = {
         name: 'Sven Lammertink',
-        // button: {
-        //     href: '/blog',
-        //     text: 'Read blog',
-        // },
         pictureUrl: 'https://github.com/Svenlaa.png',
         role: 'Software developer',
         links: [
@@ -28,7 +24,7 @@ const Page = ({ path }: { path: string }): Promise<string> | string => {
     };
 
     return (
-        <BaseLayout path={path} class="flex h-full items-center justify-center">
+        <BaseLayout class="flex h-full items-center justify-center">
             <div class="m-4 flex flex-col rounded-2xl bg-white/50 p-8 pb-4 drop-shadow-2xl dark:bg-white/10">
                 <span class="relative mx-auto h-72 w-72">
                     <img
