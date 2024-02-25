@@ -15,7 +15,7 @@ const Page = (): Promise<string> | string => {
                 label: 'LinkedIn',
             },
             {
-                href: 'mailto:hey@svenlaa.com',
+                href: 'mailto:mail@svenlaa.com',
                 icon: 'bi-envelope-fill',
                 label: 'email',
                 animate: true,
