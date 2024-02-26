@@ -10,7 +10,7 @@ const Page = (props: tBlogpage): Promise<string> | string => {
     return (
         <BaseLayout
             class="text-lg flex mt-8 mx-2 flex-col md:flex-row lg:gap-8 gap-4 justify-center"
-            title={`${meta.title} | Svenlaa`}
+            title={`${meta.title} - Svenlaa`}
         >
             <div class="flex-1 max-w-[80ch]">
                 <h1 class="text-3xl font-bold bg-gradient-to-br from-prime-800 dark:from-prime-700 to-prime-500 dark:to-prime-400 bg-clip-text text-transparent ">
