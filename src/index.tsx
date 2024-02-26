@@ -4,9 +4,11 @@ import { run } from './util.ts';
 import Index from './pages/index.tsx';
 import BlogPost from './pages/blog-post.tsx';
 import parseMD from 'parse-md';
+import ErrorPage from './pages/error.tsx';
 
 // biome-ignore lint/correctness/noEmptyPattern:
-export type JSX = ({}: { [k: string]: string | number }) => string | Promise<string>;
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+export type JSX = ({}: { [k: string]: any }) => string | Promise<string>;
 export let PATH = '/';
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -15,6 +17,15 @@ const pages: tPage[] = [
     {
         path: '/',
         Page: Index,
+    },
+    {
+        path: '/404',
+        Page: ErrorPage,
+        props: {
+            code: 404,
+            message: 'Page not found',
+            links: [{ label: 'Home', href: '/' }],
+        },
     },
 ];
 
@@ -46,6 +57,18 @@ const renderBlog = async (): Promise<void> => {
     const filenames = await getBlogFilenames();
     if (!filenames.length) return;
     await populateBlogData(filenames);
+    await renderPage({
+        Page: ErrorPage,
+        path: '/blog/404',
+        props: {
+            code: 404,
+            message: 'Post not found',
+            links: [
+                { label: 'Home', href: '/' },
+                { label: 'Latest Post', href: blogData[0].path },
+            ],
+        },
+    });
     for (const blogDatum of blogData) {
         const { path, ...props } = blogDatum;
         await renderPage({ Page: BlogPost, path, props });
