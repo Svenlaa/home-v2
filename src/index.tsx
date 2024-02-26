@@ -27,6 +27,15 @@ const pages: tPage[] = [
             links: [{ label: 'Home', href: '/' }],
         },
     },
+    {
+        path: '/500',
+        Page: ErrorPage,
+        props: {
+            code: 500,
+            message: 'Internal server error',
+            links: [{ label: 'Home', href: '/' }],
+        },
+    },
 ];
 
 export type BlogMetadata = {
