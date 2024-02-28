@@ -9,8 +9,14 @@ const Page = (props: tBlogpage): Promise<string> | string => {
     const post = marked.parse(content);
 
     let description = content ? markdownToTxt(content).replace(/\s\s+/g, ' ') : null;
-    if (description !== null && description.length > 197) {
-        description = `${description.slice(0, 197)}...`;
+    if (description !== null) {
+        const lengthSentence = 2;
+        let sentences = description.split('. ');
+        if (sentences.length > lengthSentence) sentences = sentences.slice(0, lengthSentence);
+        description = `${sentences.join('. ')}.`;
+        if (description.length > 197) {
+            description = `${description.slice(0, 197)}...`;
+        }
     }
 
     return (
