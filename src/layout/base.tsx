@@ -24,7 +24,6 @@ const BaseLayout = (props: Props) => {
                 <head>
                     <title>{title ?? 'Svenlaa'}</title>
                     <meta name="description" content="My website and blog" />
-                    <meta name="og:url" content={`https://svenlaa.com${PATH}`} />
                     <meta property="og:image" content="/og.jpg" />
 
                     <link rel="stylesheet" href="/style.css" />
