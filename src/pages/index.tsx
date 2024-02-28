@@ -4,7 +4,7 @@ import BaseLayout from '../layout/base';
 const Page = (): Promise<string> | string => {
     const profile = {
         name: 'Sven Lammertink',
-        pictureUrl: 'https://github.com/Svenlaa.png',
+        pictureUrl: 'https://avatars.githubusercontent.com/u/45122845?v=4',
         role: 'Software developer',
         links: [
             { href: 'https://github.com/Svenlaa', icon: 'bi-github', label: 'GitHub' },
