@@ -2,14 +2,22 @@ import Html from '@kitajs/html';
 import BaseLayout from '../layout/base.tsx';
 import { marked } from 'marked';
 import BlogNavigation from '../components/blog/nav.js';
+import { markdownToTxt } from 'markdown-to-txt';
 
 const Page = (props: tBlogpage): Promise<string> | string => {
     const { metadata: meta, content } = props;
     const post = marked.parse(content);
 
+    let description = content ? markdownToTxt(content).replace(/\s\s+/g, ' ') : null;
+    if (description !== null && description.length > 197) {
+        description = `${description.slice(0, 197)}...`;
+    }
+
     return (
         <BaseLayout
             class="text-lg flex mt-8 mx-2 flex-col md:flex-row lg:gap-8 gap-4 justify-center"
+            description={description}
+            author="Svenlaa"
             title={`${meta.title} - Svenlaa`}
         >
             <div class="flex-1 max-w-[80ch]">
