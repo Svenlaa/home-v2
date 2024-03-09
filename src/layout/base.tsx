@@ -14,7 +14,7 @@ const BaseLayout = (props: Props) => {
         props?.class ?? ''
     }`.trim();
 
-    console.log(description);
+    const desc = description ?? 'My website and blog.';
 
     //remove extracted elements from props
     props.children = undefined;
@@ -29,9 +29,23 @@ const BaseLayout = (props: Props) => {
             <html lang="en" data-generated={new Date().toISOString().split('T')[0]}>
                 <head>
                     <title>{title ?? 'Svenlaa'}</title>
-                    <meta name="description" content={description ?? 'My website and blog'} />
+                    <meta name="description" content={desc} />
                     {!!author && <meta name="author" content={author} />}
-                    <meta property="og:image" content="/og.jpg" />
+
+                    {/* Facebook meta tags */}
+                    <meta property="og:url" content={`https://svenlaa.com/${PATH}`} />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:title" content={title ?? 'Svenlaa'} />
+                    <meta property="og:description" content={desc} />
+                    <meta property="og:image" content="https://svenlaa.com/og.jpg" />
+
+                    {/* Twitter meta tags */}
+                    <meta name="twitter:card" content="summary_large_image" />
+                    <meta property="twitter:domain" content="svenlaa.com" />
+                    <meta property="twitter:url" content={`https://svenlaa.com/${PATH}`} />
+                    <meta name="twitter:title" content={title ?? 'Svenlaa'} />
+                    <meta name="twitter:description" content={desc} />
+                    <meta name="twitter:image" content="https://svenlaa.com/og.jpg" />
 
                     <link rel="stylesheet" href="/style.css" />
                     <link rel="stylesheet" href="/marked.css" />
