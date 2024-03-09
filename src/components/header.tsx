@@ -14,59 +14,61 @@ const Header = () => {
     ] as const;
     return (
         <header
-            class="z-50 mx-auto w-screen md:container bg-gray-50/50 dark:bg-white/10 backdrop-blur-xl"
+            class="z-50 w-screen bg-gray-50/50 dark:bg-white/10 backdrop-blur-xl"
             x-data="{open: false}"
         >
-            <div class="mx-auto flex w-full flex-row justify-between p-4 drop-shadow-md md:bg-inherit">
-                <a
-                    href="/"
-                    class="my-auto text-3xl duration-200 ease-in hover:text-prime-900 dark:text-white dark:hover:text-prime-200"
-                >
-                    Svenlaa
-                </a>
+            <div class="md:container mx-auto">
+                <div class="mx-auto flex w-full flex-row justify-between p-4 drop-shadow-md md:bg-inherit">
+                    <a
+                        href="/"
+                        class="my-auto text-3xl duration-200 ease-in hover:text-prime-900 dark:text-white dark:hover:text-prime-200"
+                    >
+                        Svenlaa
+                    </a>
 
+                    {!!paths.length && (
+                        <>
+                            {/* Section with hamburger for smaller screens */}
+                            <div class="flex flex-row md:hidden ">
+                                <button
+                                    class="translate aspect-square rounded-full bg-prime-600 text-3xl text-white"
+                                    aria-label="hamburger menu"
+                                    type="button"
+                                    x-on:click="open = !open"
+                                >
+                                    <i
+                                        x-bind:class="{'bi-list': !open, 'bi-x': open}"
+                                        class="bi-list aspect-square scale-90 p-2"
+                                    />
+                                </button>
+                            </div>
+
+                            {/* Section that shows tabs on larger screens */}
+                            <div class="hidden gap-4 md:flex md:flex-row">
+                                {paths.map((p) => (
+                                    <HeaderLink to={p.href} key={p.href} icon={p.icon}>
+                                        {p.label}
+                                    </HeaderLink>
+                                ))}
+                            </div>
+                        </>
+                    )}
+                </div>
+
+                {/* Dropdown for smaller screens */}
                 {!!paths.length && (
-                    <>
-                        {/* Section with hamburger for smaller screens */}
-                        <div class="flex flex-row md:hidden ">
-                            <button
-                                class="translate aspect-square rounded-full bg-prime-600 text-3xl text-white"
-                                aria-label="hamburger menu"
-                                type="button"
-                                x-on:click="open = !open"
-                            >
-                                <i
-                                    x-bind:class="{'bi-list': !open, 'bi-x': open}"
-                                    class="bi-list aspect-square scale-90 p-2"
-                                />
-                            </button>
-                        </div>
-
-                        {/* Section that shows tabs on larger screens */}
-                        <div class="hidden gap-4 md:flex md:flex-row">
-                            {paths.map((p) => (
-                                <HeaderLink to={p.href} key={p.href} icon={p.icon}>
-                                    {p.label}
-                                </HeaderLink>
-                            ))}
-                        </div>
-                    </>
+                    <div
+                        x-bind:class="{'flex': open, 'hidden': !open}"
+                        class="absolute w-full hidden flex-col rounded-b-xl px-4 drop-shadow-md md:hidden backdrop-blur-xl bg-gray-50/50 dark:bg-white/10"
+                    >
+                        {paths.map((p) => (
+                            <HeaderLink to={p.href} key={p.href} icon={p.icon}>
+                                {p.label}
+                            </HeaderLink>
+                        ))}
+                    </div>
                 )}
             </div>
-
-            {/* Dropdown for smaller screens */}
-            {!!paths.length && (
-                <div
-                    x-bind:class="{'flex': open, 'hidden': !open}"
-                    class="absolute w-full hidden flex-col rounded-b-xl px-4 drop-shadow-md md:hidden backdrop-blur-xl bg-gray-50/50 dark:bg-white/10"
-                >
-                    {paths.map((p) => (
-                        <HeaderLink to={p.href} key={p.href} icon={p.icon}>
-                            {p.label}
-                        </HeaderLink>
-                    ))}
-                </div>
-            )}
         </header>
     );
 };
