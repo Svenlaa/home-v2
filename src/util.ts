@@ -9,3 +9,5 @@ export const run = async (command: string, options: string[] = []) => {
         console.log(stdout, stderr);
     }
 };
+export const formatDateToRFC822 = (date: Date): string =>
+    new Date(date.setUTCHours(18, 10)).toUTCString();

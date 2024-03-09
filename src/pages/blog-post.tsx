@@ -4,10 +4,7 @@ import { marked } from 'marked';
 import BlogNavigation from '../components/blog/nav.js';
 import { markdownToTxt } from 'markdown-to-txt';
 
-const Page = (props: tBlogpage): Promise<string> | string => {
-    const { metadata: meta, content } = props;
-    const post = marked.parse(content);
-
+export const getDescription = (content: string): string => {
     let description = content ? markdownToTxt(content).replace(/\s\s+/g, ' ') : null;
     if (description !== null) {
         const lengthSentence = 2;
@@ -18,6 +15,14 @@ const Page = (props: tBlogpage): Promise<string> | string => {
             description = `${description.slice(0, 197)}...`;
         }
     }
+    return description;
+};
+
+const Page = (props: tBlogpage): Promise<string> | string => {
+    const { metadata: meta, content } = props;
+    const post = marked.parse(content);
+
+    const description = getDescription(content);
 
     return (
         <BaseLayout
