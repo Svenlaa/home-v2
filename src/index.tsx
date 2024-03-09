@@ -1,6 +1,6 @@
 import { Html } from '@kitajs/html';
 import { mkdir, rm, writeFile, cp, readdir, readFile } from 'node:fs/promises';
-import { run } from './util.ts';
+import { formatDateToRFC822, run } from './util.ts';
 import Index from './pages/index.tsx';
 import BlogPost, { getDescription } from './pages/blog-post.tsx';
 import parseMD from 'parse-md';
@@ -85,9 +85,9 @@ const renderBlog = async (): Promise<void> => {
         const { path, ...props } = blogDatum;
         const description = getDescription(markdownToTxt(props.content));
         rssItems.push(
-            `<item><title>${
-                props.metadata.title
-            }</title><pubDate>${props.metadata.createdAt.toDateString()}</pubDate><link>https://svenlaa.com${path}</link><guid>https://svenlaa.com${path}</guid><description>${description}</description></item>`,
+            `<item><title>${props.metadata.title}</title><pubDate>${formatDateToRFC822(
+                props.metadata.createdAt,
+            )}</pubDate><link>https://svenlaa.com${path}</link><guid>https://svenlaa.com${path}</guid><description>${description}</description></item>`,
         );
         await renderPage({ Page: BlogPost, path, props });
     }
