@@ -2,9 +2,10 @@ import { Html } from '@kitajs/html';
 import { mkdir, rm, writeFile, cp, readdir, readFile } from 'node:fs/promises';
 import { run } from './util.ts';
 import Index from './pages/index.tsx';
-import BlogPost from './pages/blog-post.tsx';
+import BlogPost, { getDescription } from './pages/blog-post.tsx';
 import parseMD from 'parse-md';
 import ErrorPage from './pages/error.tsx';
+import { markdownToTxt } from 'markdown-to-txt';
 
 // biome-ignore lint/correctness/noEmptyPattern:
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -79,10 +80,26 @@ const renderBlog = async (): Promise<void> => {
             ],
         },
     });
+    const rssItems: string[] = [];
     for (const blogDatum of blogData) {
         const { path, ...props } = blogDatum;
+        const description = getDescription(markdownToTxt(props.content));
+        rssItems.push(
+            `<item><title>${
+                props.metadata.title
+            }</title><pubDate>${props.metadata.createdAt.toDateString()}</pubDate><link>https://svenlaa.com${path}</link><guid>https://svenlaa.com${path}</guid><description>${description}</description></item>`,
+        );
         await renderPage({ Page: BlogPost, path, props });
     }
+    const rss = `<rss version="2.0"><channel><title>Svenlaa</title><link>https://svenlaa.com</link><description>My blog</description>${rssItems.join(
+        '',
+    )}</channel>`;
+
+    await render('/blog.xml', rss);
+};
+
+const render = async (path: string, content: string): Promise<void> => {
+    await writeFile(`dist${path}`, content);
 };
 
 const renderPage = async (renderProps: tPage): Promise<void> => {
@@ -91,10 +108,10 @@ const renderPage = async (renderProps: tPage): Promise<void> => {
     PATH = path;
     const html = await (<Page {...props} />);
     if (path === '/') {
-        await writeFile('dist/index.html', html);
+        await render('/index.html', html);
         return;
     }
-    await writeFile(`dist${path}.html`, html);
+    await render(`${path}.html`, html);
 };
 
 const initDist = async (): Promise<void> => {
