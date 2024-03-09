@@ -39,6 +39,7 @@ const pages: tPage[] = [
 ];
 
 export type BlogMetadata = {
+    longTitle?: string;
     title: string;
     createdAt: Date;
     updatedAt?: Date;

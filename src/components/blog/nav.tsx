@@ -3,7 +3,7 @@ import { blogData, PATH } from '../../index.js';
 
 const BlogNavigation = async () => {
     return (
-        <nav class="w-72 p-8 bg-white/50 rounded-b-none drop-shadow-2xl rounded-2xl dark:bg-white/10">
+        <nav class="w-80 p-8 bg-white/50 rounded-b-none drop-shadow-2xl rounded-2xl dark:bg-white/10">
             <ul>
                 {blogData.map((datum) => (
                     <li>
