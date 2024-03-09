@@ -42,6 +42,7 @@ const pages: tPage[] = [
 export type BlogMetadata = {
     longTitle?: string;
     title: string;
+    description?: string;
     createdAt: Date;
     updatedAt?: Date;
 };
@@ -83,7 +84,8 @@ const renderBlog = async (): Promise<void> => {
     const rssItems: string[] = [];
     for (const blogDatum of blogData) {
         const { path, ...props } = blogDatum;
-        const description = getDescription(markdownToTxt(props.content));
+        const description =
+            props.metadata.description ?? getDescription(markdownToTxt(props.content));
         rssItems.push(
             `<item><title>${
                 props.metadata.longTitle ?? props.metadata.title
