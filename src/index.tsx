@@ -85,7 +85,9 @@ const renderBlog = async (): Promise<void> => {
         const { path, ...props } = blogDatum;
         const description = getDescription(markdownToTxt(props.content));
         rssItems.push(
-            `<item><title>${props.metadata.title}</title><pubDate>${formatDateToRFC822(
+            `<item><title>${
+                props.metadata.longTitle ?? props.metadata.title
+            }</title><pubDate>${formatDateToRFC822(
                 props.metadata.createdAt,
             )}</pubDate><link>https://svenlaa.com${path}</link><guid>https://svenlaa.com${path}</guid><description>${description}</description></item>`,
         );
