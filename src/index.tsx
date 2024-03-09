@@ -93,7 +93,7 @@ const renderBlog = async (): Promise<void> => {
     }
     const rss = `<rss version="2.0"><channel><title>Svenlaa</title><link>https://svenlaa.com</link><description>My blog</description>${rssItems.join(
         '',
-    )}</channel>`;
+    )}</channel></rss>`;
 
     await render('/blog.xml', rss);
 };
