@@ -22,7 +22,7 @@ const Page = (props: tBlogpage): Promise<string> | string => {
     const { metadata: meta, content } = props;
     const post = marked.parse(content);
 
-    const description = getDescription(content);
+    const description = meta.description ?? getDescription(props.content);
 
     return (
         <BaseLayout

@@ -2,6 +2,7 @@
 title: Desktop to Laptop
 longTitle: Desktop to Laptop, a Lenovo IdeaPad Pro 5 review
 createdAt: 2024-03-09
+description: I bought a brand-new laptop, the IdeaPad Pro 5. I switched away from desktop to enjoy portability. I installed Linux Fedora and customized it to my liking.
 ---
 
 A couple of weeks ago I bought a brand-new laptop, the Lenovo IdeaPad Pro 5. I have a nearly 5-year-old custom desktop
