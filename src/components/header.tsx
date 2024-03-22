@@ -1,5 +1,5 @@
 import { Html } from '@kitajs/html';
-import { blogData, PATH } from '../index.js';
+import { PATH, blogData } from '../index.js';
 
 type Path = {
     href: string;
@@ -14,7 +14,7 @@ const Header = () => {
     ] as const;
     return (
         <header
-            class="z-50 w-screen bg-gray-50/50 dark:bg-white/10 backdrop-blur-xl"
+            class="z-50 w-full bg-gray-50/50 dark:bg-white/10 backdrop-blur-xl"
             x-data="{open: false}"
         >
             <div class="md:container mx-auto">

@@ -1,8 +1,8 @@
 import Html from '@kitajs/html';
-import BaseLayout from '../layout/base.tsx';
+import { markdownToTxt } from 'markdown-to-txt';
 import { marked } from 'marked';
 import BlogNavigation from '../components/blog/nav.js';
-import { markdownToTxt } from 'markdown-to-txt';
+import BaseLayout from '../layout/base.tsx';
 
 export const getDescription = (content: string): string => {
     let description = content ? markdownToTxt(content).replace(/\s\s+/g, ' ') : null;
