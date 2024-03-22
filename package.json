@@ -18,13 +18,13 @@
     "@tailwindcss/typography": "^0.5.10",
     "bootstrap-icons": "^1.11.3",
     "markdown-to-txt": "^2.0.1",
-    "marked": "^12.0.0",
+    "marked": "^12.0.1",
     "parse-md": "^3.0.3",
     "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.5.3",
-    "@types/node": "^20.11.20",
+    "@biomejs/biome": "^1.6.1",
+    "@types/node": "^20.11.29",
     "http-server": "^14.1.1",
     "tsx": "^4.7.1"
   }
