@@ -3,6 +3,7 @@ import { markdownToTxt } from 'markdown-to-txt';
 import { marked } from 'marked';
 import BlogNavigation from '../components/blog/nav.js';
 import BaseLayout from '../layout/base.tsx';
+import { formatDateYMD } from '../util.js';
 
 export const getDescription = (content: string): string => {
     let description = content ? markdownToTxt(content).replace(/\s\s+/g, ' ') : null;
@@ -36,9 +37,9 @@ const Page = (props: tBlogpage): Promise<string> | string => {
                     {meta.longTitle ?? meta.title}
                 </h1>
                 <div class="text-gray-500 text-sm mt-1 mb-4 flex flex-col">
-                    <span>posted on {new Date(meta.createdAt).toLocaleDateString()}</span>
+                    <span>posted on {formatDateYMD(new Date(meta.createdAt))}</span>
                     {!!meta.updatedAt && (
-                        <span>updated on {new Date(meta.updatedAt).toLocaleDateString()}</span>
+                        <span>updated on {formatDateYMD(new Date(meta.updatedAt))}</span>
                     )}
                 </div>
                 <article class="prose dark:prose-invert max-w-[80ch] pb-8">{post}</article>

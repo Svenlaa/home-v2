@@ -1,5 +1,6 @@
 import Html from '@kitajs/html';
-import { blogData, PATH } from '../../index.js';
+import { PATH, blogData } from '../../index.js';
+import { formatDateYMD } from '../../util.js';
 
 const BlogNavigation = async () => {
     return (
@@ -15,7 +16,7 @@ const BlogNavigation = async () => {
                                 {datum.metadata.title}
                             </h5>
                             <span class="text-gray-500 ms-2 text-sm">
-                                {new Date(datum.metadata.createdAt).toLocaleDateString()}
+                                {formatDateYMD(new Date(datum.metadata.createdAt))}
                             </span>
                         </a>
                     </li>
