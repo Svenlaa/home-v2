@@ -15,6 +15,11 @@ const Page = (): Promise<string> | string => {
                 label: 'LinkedIn',
             },
             {
+                href: 'https://app.thestorygraph.com/profile/svenlaa',
+                icon: 'bi-bookmarks-fill',
+                label: 'StoryGraph',
+            },
+            {
                 href: 'mailto:mail@svenlaa.com',
                 icon: 'bi-envelope-fill',
                 label: 'email',
