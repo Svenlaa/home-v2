@@ -1,5 +1,5 @@
 import { Html } from '@kitajs/html';
-import BaseLayout from '../layout/base';
+import BaseLayout from '../layout/base.tsx';
 
 const Page = (): Promise<string> | string => {
     const profile = {
@@ -44,19 +44,10 @@ const Page = (): Promise<string> | string => {
                                 animate={l.animate}
                                 href={l.href}
                                 icon={l.icon}
-                                key={l.href}
                                 label={l.label}
                             />
                         ))}
                     </div>
-                )}
-                {!!profile.button && (
-                    <a
-                        href={profile.button.href}
-                        class="mx-auto my-2 w-min whitespace-nowrap rounded-full bg-prime-600 py-2 px-4 text-2xl font-extrabold text-white transition-colors duration-200 hover:bg-prime-700"
-                    >
-                        {profile.button.text}
-                    </a>
                 )}
             </div>
         </BaseLayout>
@@ -65,7 +56,7 @@ const Page = (): Promise<string> | string => {
 
 type pathType = {
     readonly href: string;
-    readonly icon: IconDefinition;
+    readonly icon: string;
     readonly label: string;
     readonly animate?: boolean;
 };
@@ -83,6 +74,7 @@ const ProfileLink = (props: pathType) => {
                 aria-label={props.label}
                 class="h-full w-full flex justify-center items-center flex-row "
                 rel="noreferrer"
+                title={props.label}
             >
                 <i class={`${props.icon}`} />
             </a>

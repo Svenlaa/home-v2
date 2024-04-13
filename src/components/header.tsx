@@ -46,7 +46,7 @@ const Header = () => {
                             {/* Section that shows tabs on larger screens */}
                             <div class="hidden gap-4 md:flex md:flex-row">
                                 {paths.map((p) => (
-                                    <HeaderLink to={p.href} key={p.href} icon={p.icon}>
+                                    <HeaderLink to={p.href} icon={p.icon}>
                                         {p.label}
                                     </HeaderLink>
                                 ))}
@@ -62,7 +62,7 @@ const Header = () => {
                         class="absolute w-full hidden flex-col rounded-b-xl px-4 drop-shadow-md md:hidden backdrop-blur-xl bg-gray-50/50 dark:bg-white/10"
                     >
                         {paths.map((p) => (
-                            <HeaderLink to={p.href} key={p.href} icon={p.icon}>
+                            <HeaderLink to={p.href} icon={p.icon}>
                                 {p.label}
                             </HeaderLink>
                         ))}
@@ -75,7 +75,7 @@ const Header = () => {
 
 type LinkProps = {
     to: string;
-    children: ReactNode;
+    children: JSX.Element;
     icon?: string;
 };
 

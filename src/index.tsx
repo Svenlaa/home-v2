@@ -46,7 +46,7 @@ export type BlogMetadata = {
     createdAt: Date;
     updatedAt?: Date;
 };
-type BlogDatum = { content: string; metadata: BlogMetadata };
+export type BlogDatum = { content: string; metadata: BlogMetadata };
 export const blogData: (BlogDatum & { path: string })[] = [];
 
 const getBlogFilenames = async (): Promise<string[]> => {

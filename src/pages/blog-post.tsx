@@ -4,6 +4,7 @@ import { marked } from 'marked';
 import BlogNavigation from '../components/blog/nav.js';
 import BaseLayout from '../layout/base.tsx';
 import { formatDateYMD } from '../util.js';
+import type { BlogDatum } from '../index.tsx';
 
 export const getDescription = (content: string): string => {
     let description = content ? markdownToTxt(content).replace(/\s\s+/g, ' ') : null;
@@ -19,7 +20,7 @@ export const getDescription = (content: string): string => {
     return description;
 };
 
-const Page = (props: tBlogpage): Promise<string> | string => {
+const Page = (props: BlogDatum): Promise<string> | string => {
     const { metadata: meta, content } = props;
     const post = marked.parse(content);
 

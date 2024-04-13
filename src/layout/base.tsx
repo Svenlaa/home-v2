@@ -1,5 +1,5 @@
 import Html from '@kitajs/html';
-import Header from '../components/header';
+import Header from '../components/header.tsx';
 import IntrinsicElements = JSX.IntrinsicElements;
 import { PATH } from '../index.js';
 
@@ -51,7 +51,11 @@ const BaseLayout = (props: Props) => {
                     <link rel="stylesheet" href="/marked.css" />
                     <script src="https://unpkg.com/alpinejs@3.13.5/dist/cdn.min.js" defer />
                     <link rel="preconnect" href="https://fonts.googleapis.com" />
-                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+                    <link
+                        rel="preconnect"
+                        href="https://fonts.gstatic.com"
+                        crossorigin="crossorigin"
+                    />
                     <link
                         href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
                         rel="stylesheet"
