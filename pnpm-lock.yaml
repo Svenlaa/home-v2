@@ -10,7 +10,7 @@ dependencies:
     version: 3.1.2(@kitajs/ts-html-plugin@1.3.4)
   '@kitajs/ts-html-plugin':
     specifier: ^1.3.4
-    version: 1.3.4(@kitajs/html@3.1.2)(typescript@5.4.2)
+    version: 1.3.4(@kitajs/html@3.1.2)(typescript@5.4.5)
   '@tailwindcss/typography':
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.4.1)
@@ -394,11 +394,11 @@ packages:
     peerDependencies:
       '@kitajs/ts-html-plugin': '>=1.3.3'
     dependencies:
-      '@kitajs/ts-html-plugin': 1.3.4(@kitajs/html@3.1.2)(typescript@5.4.2)
+      '@kitajs/ts-html-plugin': 1.3.4(@kitajs/html@3.1.2)(typescript@5.4.5)
       csstype: 3.1.3
     dev: false
 
-  /@kitajs/ts-html-plugin@1.3.4(@kitajs/html@3.1.2)(typescript@5.4.2):
+  /@kitajs/ts-html-plugin@1.3.4(@kitajs/html@3.1.2)(typescript@5.4.5):
     resolution: {integrity: sha512-AAht1OvLkQizJ59DM70qBgb0VwdyW9KUtDaH66JrfanMMvSSoM598WspJrVdVbe50olw69H+nnTj0lEfNDVmPQ==}
     hasBin: true
     peerDependencies:
@@ -408,7 +408,7 @@ packages:
       '@kitajs/html': 3.1.2(@kitajs/ts-html-plugin@1.3.4)
       chalk: 4.1.2
       tslib: 2.6.2
-      typescript: 5.4.2
+      typescript: 5.4.5
       yargs: 17.7.2
     dev: false
 
@@ -1478,8 +1478,8 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /typescript@5.4.2:
-    resolution: {integrity: sha512-+2/g0Fds1ERlP6JsakQQDXjZdZMM+rqpamFZJEKh4kwTIn3iDkgKtby0CeNd5ATNZ4Ry1ax15TMx0W2V+miizQ==}
+  /typescript@5.4.5:
+    resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: false
