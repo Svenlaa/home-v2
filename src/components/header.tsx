@@ -84,7 +84,7 @@ const HeaderLink = (props: LinkProps) => {
     const isActive = to === PATH || (to !== '/' && PATH.startsWith(to));
     return (
         <a
-            href={to === '/blog' ? blogData[0].path : to}
+            href={to}
             class={`${
                 isActive
                     ? 'text-prime-700 md:bg-prime-700 md:text-white md:hover:bg-prime-600 dark:text-prime-500 md:dark:text-prime-50'

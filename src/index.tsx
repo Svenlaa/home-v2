@@ -5,6 +5,7 @@ import Index from './pages/index.tsx';
 import BlogPost, { getDescription } from './pages/blog-post.tsx';
 import parseMD from 'parse-md';
 import ErrorPage from './pages/error.tsx';
+import BlogPage from './pages/blog.tsx';
 import { markdownToTxt } from 'markdown-to-txt';
 
 // biome-ignore lint/correctness/noEmptyPattern:
@@ -46,7 +47,7 @@ export type BlogMetadata = {
     createdAt: Date;
     updatedAt?: Date;
 };
-export type BlogDatum = { content: string; metadata: BlogMetadata };
+export type BlogDatum = { content: string; metadata: BlogMetadata; path: string };
 export const blogData: (BlogDatum & { path: string })[] = [];
 
 const getBlogFilenames = async (): Promise<string[]> => {
@@ -80,6 +81,11 @@ const renderBlog = async (): Promise<void> => {
                 { label: 'Latest Post', href: blogData[0].path },
             ],
         },
+    });
+    await renderPage({
+        Page: BlogPage,
+        path: '/blog/index',
+        props: { blogData },
     });
     const rssItems: string[] = [];
     for (const blogDatum of blogData) {
