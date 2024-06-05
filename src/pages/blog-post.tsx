@@ -2,9 +2,9 @@ import Html from '@kitajs/html';
 import { markdownToTxt } from 'markdown-to-txt';
 import { marked } from 'marked';
 import BlogNavigation from '../components/blog/nav.js';
+import type { BlogDatum } from '../index.tsx';
 import BaseLayout from '../layout/base.tsx';
 import { formatDateYMD } from '../util.js';
-import type { BlogDatum } from '../index.tsx';
 
 export const getDescription = (content: string): string => {
     let description = content ? markdownToTxt(content).replace(/\s\s+/g, ' ') : null;
@@ -31,7 +31,7 @@ const Page = (props: BlogDatum): Promise<string> | string => {
             class="text-lg flex mt-8 mx-2 flex-col md:flex-row lg:gap-8 gap-4 justify-center"
             description={description}
             author="Svenlaa"
-            title={`${meta.title} - Svenlaa`}
+            title={`${meta.longTitle ?? meta.title} - Svenlaa`}
         >
             <div class="flex-1 max-w-[80ch]">
                 <h1 class="text-3xl font-bold bg-gradient-to-br from-prime-800 dark:from-prime-700 to-prime-500 dark:to-prime-400 bg-clip-text text-transparent ">
