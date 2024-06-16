@@ -22,7 +22,10 @@ const Page = ({ blogData }: { blogData: BlogDatum[] }) => {
                 </div>
                 {blogData.map((i) => {
                     return (
-                        <a href={i.path} class="flex flex-row flex-1 items-end group">
+                        <a
+                            href={i.path}
+                            class="flex flex-col md:flex-row flex-1 md:items-end group"
+                        >
                             <span class="w-28 text-sm text-gray-500 group-hover:text-gray-900">
                                 {formatDateYMD(i.metadata.createdAt)}
                             </span>
