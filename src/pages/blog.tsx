@@ -7,7 +7,7 @@ const Page = ({ blogData }: { blogData: BlogDatum[] }) => {
     const blogMeta = blogData.map((i) => i.metadata);
     console.log(blogMeta);
     return (
-        <BaseLayout class="text-lg flex mt-8 mx-2 flex-col md:flex-row lg:gap-8 gap-4 justify-center">
+        <BaseLayout class="text-lg flex mt-8 mx-2 flex-col md:flex-row lg:gap-8 gap-4 md:justify-center">
             <div class="flex flex-col h-min gap-4">
                 <div class="flex flex-row gap-4">
                     <a
