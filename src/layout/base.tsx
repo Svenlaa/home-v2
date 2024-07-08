@@ -50,7 +50,7 @@ const BaseLayout = (props: Props) => {
                     <link rel="stylesheet" href="/style.css" />
                     <link rel="stylesheet" href="/marked.css" />
                     <script src="https://unpkg.com/alpinejs@3.13.5/dist/cdn.min.js" defer />
-                    <script defer data-domain="svenlaa.com" src="https://plausible.io/js/script.js"></script>
+                    <script defer data-domain="svenlaa.com" src="https://conceivable.svenlaa.workers.dev/js/script.js"></script>
                     <link rel="preconnect" href="https://fonts.googleapis.com" />
                     <link
                         rel="preconnect"
