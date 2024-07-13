@@ -52,7 +52,6 @@ const BaseLayout = (props: Props) => {
                     <script src="https://unpkg.com/alpinejs@3.13.5/dist/cdn.min.js" defer />
                     <script defer data-domain="svenlaa.com" data-api="https://conceivable.svenlaa.workers.dev/api/message" src="https://conceivable.svenlaa.workers.dev/scripts/welcome.js"></script>
                     <link rel="preconnect" href="https://fonts.googleapis.com" />
-                    <script data-goatcounter="https://svenlaa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
                     <link
                         rel="preconnect"
                         href="https://fonts.gstatic.com"
