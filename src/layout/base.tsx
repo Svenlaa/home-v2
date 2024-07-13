@@ -50,7 +50,12 @@ const BaseLayout = (props: Props) => {
                     <link rel="stylesheet" href="/style.css" />
                     <link rel="stylesheet" href="/marked.css" />
                     <script src="https://unpkg.com/alpinejs@3.13.5/dist/cdn.min.js" defer />
-                    <script defer data-domain="svenlaa.com" data-api="https://conceivable.svenlaa.workers.dev/api/message" src="https://conceivable.svenlaa.workers.dev/scripts/welcome.js"></script>
+                    <script
+                        defer
+                        data-domain="svenlaa.com"
+                        data-api="https://conceivable.svenlaa.workers.dev/api/message"
+                        src="https://conceivable.svenlaa.workers.dev/scripts/welcome.js"
+                    />
                     <link rel="preconnect" href="https://fonts.googleapis.com" />
                     <link
                         rel="preconnect"
