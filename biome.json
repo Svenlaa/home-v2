@@ -13,5 +13,14 @@
             "arrowParentheses": "always",
             "quoteStyle": "single"
         }
+    },
+    "linter": {
+        "rules": {
+            "correctness": {
+                "useJsxKeyInIterable": {
+                    "level": "off"
+                }
+            }
+        }
     }
 }
