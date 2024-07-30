@@ -2,6 +2,7 @@ import Html from '@kitajs/html';
 import Header from '../components/header.tsx';
 import IntrinsicElements = JSX.IntrinsicElements;
 import { PATH } from '../index.js';
+import Footer from '../components/footer.tsx';
 
 type Props = {
     title?: string;
@@ -82,6 +83,7 @@ const BaseLayout = (props: Props) => {
                     >
                         {children}
                     </main>
+                    <Footer />
                 </body>
             </html>
         </>
