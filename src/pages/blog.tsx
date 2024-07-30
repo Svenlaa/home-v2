@@ -26,10 +26,10 @@ const Page = ({ blogData }: { blogData: BlogDatum[] }) => {
                             href={i.path}
                             class="flex flex-col md:flex-row flex-1 md:items-end group"
                         >
-                            <span class="w-28 text-sm text-gray-500 group-hover:text-gray-900">
+                            <span class="w-28 text-sm text-gray-500 group-hover:text-gray-900 dark:group-hover:text-gray-400">
                                 {formatDateYMD(i.metadata.createdAt)}
                             </span>
-                            <h2 class="flex-grow group-hover:text-prime-600">
+                            <h2 class="flex-grow dark:text-stone-100 group-hover:text-prime-600 dark:group-hover:text-prime-400">
                                 {i.metadata.longTitle ?? i.metadata.title}
                             </h2>
                         </a>
