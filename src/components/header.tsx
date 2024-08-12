@@ -8,10 +8,7 @@ type Path = {
 };
 
 const Header = () => {
-    const paths: Readonly<Path[]> = [
-        { href: '/', label: 'Home', icon: 'bi-house' },
-        { href: '/blog', label: 'Blog', icon: 'bi-newspaper' },
-    ] as const;
+    const paths: Readonly<Path[]> = [] as const;
     return (
         <header
             class="z-50 w-full bg-gray-50/50 dark:bg-white/10 backdrop-blur-xl"
