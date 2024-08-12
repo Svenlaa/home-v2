@@ -5,7 +5,7 @@ const Page = (): Promise<string> | string => {
     const profile = {
         name: 'Sven Lammertink',
         pictureUrl: '/Svenlaa.webp',
-        role: 'Software developer',
+        role: 'Web developer',
         links: [
             { href: 'https://github.com/Svenlaa', icon: 'bi-github', label: 'GitHub' },
             { href: 'https://gitlab.com/Svenlaa', icon: 'bi-gitlab', label: 'GitLab' },
@@ -14,11 +14,11 @@ const Page = (): Promise<string> | string => {
                 icon: 'bi-linkedin',
                 label: 'LinkedIn',
             },
-            {
-                href: 'https://app.thestorygraph.com/profile/svenlaa',
-                icon: 'bi-bookmarks-fill',
-                label: 'StoryGraph',
-            },
+            // {
+            //     href: 'https://app.thestorygraph.com/profile/svenlaa',
+            //     icon: 'bi-bookmarks-fill',
+            //     label: 'StoryGraph',
+            // },
             {
                 href: 'mailto:mail@svenlaa.com',
                 icon: 'bi-envelope-fill',
