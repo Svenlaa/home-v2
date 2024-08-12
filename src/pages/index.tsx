@@ -23,7 +23,6 @@ const Page = (): Promise<string> | string => {
                 href: 'mailto:mail@svenlaa.com',
                 icon: 'bi-envelope-fill',
                 label: 'email',
-                animate: true,
             },
         ],
     };
@@ -45,12 +44,7 @@ const Page = (): Promise<string> | string => {
                 {profile.links && (
                     <div class="my-2 flex flex-row justify-center gap-2">
                         {profile.links.map((l) => (
-                            <ProfileLink
-                                animate={l.animate}
-                                href={l.href}
-                                icon={l.icon}
-                                label={l.label}
-                            />
+                            <ProfileLink href={l.href} icon={l.icon} label={l.label} />
                         ))}
                     </div>
                 )}
@@ -63,16 +57,11 @@ type pathType = {
     readonly href: string;
     readonly icon: string;
     readonly label: string;
-    readonly animate?: boolean;
 };
 const ProfileLink = (props: pathType) => {
     return (
         <div class="relative rounded-md bg-white/80 dark:bg-black/80 drop-shadow-sm justify-center h-8 w-8 text-lg text-black/80 transition-colors duration-200 hover:bg-gray-300 dark:text-gray-400 md:hover:bg-prime-700 md:hover:text-white">
-            <div
-                class={`${
-                    props.animate ? 'ping' : ''
-                } opacity-0 bg-prime-700 absolute h-full w-full top-0 -z-50 rounded-lg`}
-            />
+            <div class="opacity-0 bg-prime-700 absolute h-full w-full top-0 -z-50 rounded-lg" />
             <a
                 href={props.href}
                 target="_blank"
