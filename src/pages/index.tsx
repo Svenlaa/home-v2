@@ -14,11 +14,11 @@ const Page = (): Promise<string> | string => {
                 icon: 'bi-linkedin',
                 label: 'LinkedIn',
             },
-            // {
-            //     href: 'https://app.thestorygraph.com/profile/svenlaa',
-            //     icon: 'bi-bookmarks-fill',
-            //     label: 'StoryGraph',
-            // },
+            {
+                href: 'https://mas.to/@Svenlaa',
+                icon: 'bi-mastodon',
+                label: 'Mastodon'
+            },
             {
                 href: 'mailto:mail@svenlaa.com',
                 icon: 'bi-envelope-fill',
@@ -67,7 +67,7 @@ const ProfileLink = (props: pathType) => {
                 target="_blank"
                 aria-label={props.label}
                 class="h-full w-full flex justify-center items-center flex-row "
-                rel="noreferrer"
+                rel={props.icon === 'bi-mastodon' ? 'me' : 'noreferrer'}
                 title={props.label}
             >
                 <i class={`${props.icon}`} />
